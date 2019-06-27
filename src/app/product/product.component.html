@@ -1,0 +1,39 @@
+<div>
+    <form class="form-Add center" #AddForm="ngForm" (ngSubmit)="Add(AddForm)">
+        <div class="container-fluid">
+          <h2 class="form-signin-heading">Add Product</h2>
+          <div *ngIf="invalidAdd" class="alert alert-danger">invalid data</div>
+          <br/>
+          <label for="name" class="sr-only">Product name</label>
+          <input type="text" id="name" name="name" ngModel class="form-control" placeholder="Product Name" required autofocus>
+          <br/>
+          <label for="price" class="sr-only">Price</label>
+          <input type="text" id="price" name="price" ngModel class="form-control" placeholder="Price" required>
+          <br/>
+          <label for="quantity" class="sr-only">Quantity</label>
+          <input type="text" id="quantity" name="quantity" ngModel class="form-control" placeholder="Quantity" required>
+          <br/>
+          <br/>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+        </div>
+      </form>
+
+      <table class="table table-bordered table-hover center">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of products">
+              <td><inline-editor type="text"  [(ngModel)]="item.name" (onSave)="saveEditable(item)" size="8"></inline-editor></td>
+              <td><inline-editor type="number" [(ngModel)]="item.price" (onSave)="saveEditable(item)"  size="8"></inline-editor></td>
+              <td><inline-editor type="number" [(ngModel)]="item.quantity" (onSave)="saveEditable(item)"  size="8"></inline-editor></td>
+              <td><button class="fa fa-trash btn-danger" aria-hidden="true" (click)="Delete(item.id)"></button></td>
+            </tr>
+          </tbody>
+        </table>
+</div>

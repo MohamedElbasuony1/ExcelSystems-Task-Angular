@@ -1,0 +1,15 @@
+<form class="form-signin center" (ngSubmit)="SignUp()">
+    <div class="container-fluid">
+      <h2 class="form-signin-heading">Sign Up</h2>
+      <div *ngIf="invalidSignUp" User class="alert alert-danger">Invalid username or password.</div>
+      <br/>
+      <label for="UserName" class="sr-only">UserName</label>
+      <input [(ngModel)]="user.UserName" type="Text" id="UserName" name="UserName" class="form-control" placeholder="User Name" required autofocus>
+      <br/>
+      <label for="Password" class="sr-only">Password</label>
+      <input [(ngModel)]="user.Password" type="Password" name="Password" class="form-control" placeholder="Password" required>
+      <br/>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+      <span>you have an account...<a routerLink="/login"  >Login</a></span>
+    </div>
+  </form>
